@@ -16,7 +16,7 @@ Na abordagem inicial, o extrato em PDF era quebrado linha por linha e indexado e
 * **Causa Raiz:** Extratos bancários possuem dados tabulares altamente estruturados. O algoritmo de busca semântica quebrava o documento de forma que a data (ex: `02 MAI`) ficava em um fragmento de texto e a transação correspondente ficava em outro. Ao buscar, os dados entravam desalinhados e fragmentados no contexto do LLM.
 
 ### ✔️ A Solução Empregada (Arquitetura Atual: Contexto Longo)
-Para mitigar o erro de fragmentação e garantir 100% de acerto nas operações matemáticas e agrupamentos por instituição, a lógica de busca semântica foi substituída pelo **RAG de Contexto Longo Estruturado**. O texto do PDF passou a ser extraído mantendo a ordem cronológica e o cabeçalho original de leitura do documento, sendo injetado por inteiro no modelo `gemini-2.5-flash` com temperatura controlada (`0.1`), anulando alucinações.
+Para mitigar o erro de fragmentação e garantir acerto nas operações matemáticas e agrupamentos por instituição, a lógica de busca semântica foi substituída pelo **RAG de Contexto Longo Estruturado**. O texto do PDF passou a ser extraído mantendo a ordem cronológica e o cabeçalho original de leitura do documento, sendo injetado por inteiro no modelo `gemini-2.5-flash` com temperatura controlada (`0.1`), anulando alucinações.
 
 ---
 
